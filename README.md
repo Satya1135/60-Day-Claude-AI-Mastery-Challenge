@@ -10,17 +10,18 @@
 
 ## About This Archive
 
-This repository is the public archive of my completed AB Talks 60-Day Claude AI Mastery Challenge. It documents the learning journey, learning themes, and links to the main capstone project delivered during the challenge.
+This repository is the public archive of my completed AB Talks 60-Day Claude AI Mastery Challenge. It documents the learning journey, technical skills acquired, core learning themes, and links to the main capstone project delivered during the challenge.
 
 **What this archive contains:**
 - Challenge overview and learning themes
-- Day-by-day engineering milestones for the capstone sprint (Days 3–10 with verified commits)
-- Links to all capstone documentation, certificates, and graduation materials
+- Day-by-day engineering logs for the capstone sprint (Days 3–10 with verified commits)
+- In-depth documentation on architecture, technical skills, and key concepts
+- Reusable prompts, debugging challenges, and retrospective reflections
 - Honest progress tracking that distinguishes reported challenge completion from repository-evidenced daily milestones
 
 **What this archive does not contain:**
-- Fabricated daily logs, screenshots, or certificates
-- Source code for the capstone project (that lives in the [capstone repository](https://github.com/Satya1135/ai-linux-investigation-workspace))
+- Fabricated daily logs, screenshots, certificates, or media files
+- Source code for the capstone project (which lives in the dedicated [capstone repository](https://github.com/Satya1135/ai-linux-investigation-workspace))
 
 ---
 
@@ -39,7 +40,9 @@ This repository is the public archive of my completed AB Talks 60-Day Claude AI 
 | **Classification** | Portfolio / Demo MVP — Local Security Workstation |
 | **Sprint** | 10 engineering days (capstone portion of the 60-day challenge) |
 
-> **Note**: This project is a **Portfolio/Demo MVP**, not a production-hardened SOC platform. The investigation engine is **deterministic and rule-based** — it does not invoke a live Claude API to generate findings. Claude prompt schemas are scaffolded in Pydantic for future optional narrative assistance only.
+> **Architecture Notice**: This project is a **Portfolio/Demo MVP**, not a production-hardened SOC platform. The investigation engine is **deterministic and rule-based** — it does not invoke a live Claude API to generate findings. Claude prompt schemas are scaffolded in Pydantic for future optional narrative assistance only.
+
+For detailed architecture, technical stack, and milestone breakdown, see [projects/project-details.md](projects/project-details.md).
 
 ---
 
@@ -77,19 +80,19 @@ This repository is the public archive of my completed AB Talks 60-Day Claude AI 
 ## Major Delivered Features
 
 ### 1. Linux Evidence Intake & SHA-256 Fingerprinting
-- Upload `auth.log`, `syslog`, and `auditd` files (up to 5 MB)
-- SHA-256 fingerprinting on raw log streams for evidence integrity tracking and audit traceability
-- Parser normalization preserving line-by-line forensic provenance
-- Path traversal defense via Python `path.is_relative_to(base_dir)`
+- Upload `auth.log`, `syslog`, and `auditd` files (up to 5 MB).
+- SHA-256 fingerprinting on raw log streams for evidence integrity tracking and audit traceability.
+- Parser normalization preserving line-by-line forensic provenance.
+- Path traversal defense via Python `path.is_relative_to(base_dir)`.
 
 ### 2. Forensic Investigation Timeline
-- Automated chronological reconstruction across disparate log timestamps
-- Attack stage tagging: `AUTHENTICATION` · `EXECUTION` · `PRIVILEGE_ESCALATION` · `PERSISTENCE`
-- Severity classification: `INFO` · `LOW` · `MEDIUM` · `HIGH` · `CRITICAL`
-- Interactive table with filtering, search, and suspicious event highlighting
+- Automated chronological reconstruction across disparate log timestamps.
+- Attack stage tagging: `AUTHENTICATION` · `EXECUTION` · `PRIVILEGE_ESCALATION` · `PERSISTENCE`.
+- Severity classification: `INFO` · `LOW` · `MEDIUM` · `HIGH` · `CRITICAL`.
+- Interactive table with multi-criteria filtering, search, and suspicious event highlighting.
 
 ### 3. Deterministic MITRE ATT&CK-Aligned Investigation Engine
-5-stage investigation pipeline — `VALIDATION` → `CORRELATION` → `SEQUENCE_ANALYSIS` → `CONFIDENCE_ASSESSMENT` → `RESULT_PREPARATION`
+5-stage investigation pipeline — `VALIDATION` → `CORRELATION` → `SEQUENCE_ANALYSIS` → `CONFIDENCE_ASSESSMENT` → `RESULT_PREPARATION`.
 
 Detected threat patterns with MITRE ATT&CK alignment:
 
@@ -103,30 +106,30 @@ Detected threat patterns with MITRE ATT&CK alignment:
 | `/tmp` Payload Staging | `SUSPICIOUS_EXECUTION` | `curl`/`wget` + `chmod +x` |
 | Scheduled Task on Staged Binary | `PERSISTENCE` | Crontab entry executing `/tmp` script |
 
-> Detection is deterministic and rule-based. Findings can produce false positives or false negatives during triage. Every finding cites exact original event IDs and log line numbers.
+> Detection is deterministic and rule-based. Every finding cites exact original event IDs and log line numbers.
 
 ### 4. Analyst Review & Browser-Local Case Management
-- Adjudicate findings: `CONFIRMED` · `REJECTED` · `EDITED` · `PENDING`
-- Editable finding explanations and analyst notes
-- Standardized case IDs: `LIN-YYYYMMDD-XXXXX`
-- Browser `localStorage` persistence — save, search, filter, reopen, delete cases offline
-- Immutable separation of original engine output from analyst edits
+- Adjudicate findings: `CONFIRMED` · `REJECTED` · `EDITED` · `PENDING`.
+- Editable finding explanations and analyst notes.
+- Standardized case IDs: `LIN-YYYYMMDD-XXXXX`.
+- Browser `localStorage` persistence — save, search, filter, reopen, delete cases offline.
+- Immutable separation of original engine output from analyst edits.
 
 ### 5. Sanitized HTML & PDF Incident Reports
-- 8-section forensic report: executive summary, metrics, timeline, adjudicated findings
-- Standalone HTML export with embedded styles and `escapeHtml()` XSS protection
-- Browser-native PDF via `window.print()` and `@media print` CSS (`break-inside: avoid`)
-- Safe filename sanitization preventing directory traversal
+- 8-section forensic report: executive summary, metrics, timeline, adjudicated findings.
+- Standalone HTML export with embedded styles and `escapeHtml()` XSS protection.
+- Browser-native PDF via `window.print()` and `@media print` CSS (`break-inside: avoid`).
+- Safe filename sanitization preventing directory traversal.
 
 ### 6. Responsive UI & Accessibility
-- Mobile drawer navigation (< 768 px screen width)
-- High-contrast `:focus-visible` keyboard rings
-- ARIA roles, labels, and keyboard activation throughout
-- Horizontal scrolling wrappers for wide data tables
+- Mobile drawer navigation (< 768 px screen width).
+- High-contrast `:focus-visible` keyboard rings.
+- ARIA roles, labels, and keyboard activation throughout.
+- Horizontal scrolling wrappers for wide data tables.
 
 ### 7. Functional Settings Page *(post-sprint)*
-- Added on 2026-10-29 in commit `64a7d4b` — after the original 10-day sprint concluded
-- Provides analyst-configurable workspace settings
+- Added on 2026-10-29 in commit `64a7d4b` — after the original 10-day sprint concluded.
+- Provides analyst-configurable workspace settings.
 
 ---
 
@@ -164,57 +167,7 @@ The 60-day challenge covered eight core domains:
 | Multimodal & Agentic Tools | Sequential goal-directed AI workflows |
 | Knowledge Systems | Persistent documentation, multi-agent collaboration |
 
-See [learning-themes.md](learning-themes.md) for the full breakdown and how each theme applied during the capstone.
-
----
-
-## Key Architectural Decisions
-
-### Why Deterministic Rules — Not a Live LLM API
-Forensic credibility requires reproducible, citable evidence. A deterministic rule engine tracks exact log line numbers and event IDs, eliminating analytical hallucinations while keeping costs at zero.
-
-### Why Browser-Native PDF — Not WeasyPrint
-WeasyPrint requires native C-libraries (Cairo, Pango, GDK-PixBuf) that frequently crash on Windows without custom GTK installers. `window.print()` with `@media print` CSS delivers clean, vector A4 PDFs with zero binary dependencies.
-
-### Why localStorage — Not a Cloud Database
-Browser-local persistence allowed complete offline functionality and immediate feedback for the MVP, while the TypeScript data contracts remain ready for future PostgreSQL migration.
-
----
-
-## Known Limitations (MVP)
-
-This project is explicitly documented as a **Portfolio/Demo MVP**:
-
-| Limitation | Detail |
-|:---|:---|
-| Unauthenticated API | Endpoints accept requests without authentication tokens |
-| No Rate Limiting | Upload and analysis endpoints have no throttling |
-| Browser-Only Storage | Cases are lost if browser data is cleared |
-| Single-Analyst Design | Not built for multi-tenant enterprise SOC deployment |
-| Deterministic Heuristics | Rules can produce false positives or false negatives |
-
-The [Future Scope Roadmap](https://github.com/Satya1135/ai-linux-investigation-workspace/blob/main/docs/future-scope.md) documents the 3-, 6-, and 12-month plan to address these boundaries.
-
----
-
-## Future Improvement Roadmap
-
-### 3-Month (Security Foundations)
-- JWT Bearer token authentication with RBAC (analyst, lead, admin)
-- Redis-backed rate limiting on upload and analysis endpoints
-- PostgreSQL case storage with Alembic migrations and multi-tenant isolation
-
-### 6-Month (Detection Rigor)
-- Streaming Syslog and journald ingestion support
-- Labeled evaluation dataset (50 attack scenarios, 200 normal traces)
-- Benchmark suite measuring precision/recall per detection category
-- Declarative YAML rule definitions (Sigma-inspired)
-
-### 12-Month (AI Assistance & Production)
-- **Optional** bounded LLM narrative drafting (disabled by default; never invents evidence)
-- GitHub Actions CI matrix (Python 3.10/3.11/3.12 × Node 18/20)
-- Containerized deployment with TLS termination and security headers
-- Prometheus metrics and structured JSON audit logging
+See [learning-themes.md](learning-themes.md) and [learning/learning-summary.md](learning/learning-summary.md) for the full breakdown.
 
 ---
 
@@ -222,16 +175,29 @@ The [Future Scope Roadmap](https://github.com/Satya1135/ai-linux-investigation-w
 
 | Document | Purpose |
 |:---|:---|
-| [progress-tracker.md](progress-tracker.md) | Day-by-day milestone log with verified commits |
+| [progress-tracker.md](progress-tracker.md) | Day-by-day milestone log and 60-day documentation roadmap |
 | [learning-themes.md](learning-themes.md) | Eight core learning themes and capstone applications |
-| [graduation-reflection.md](graduation-reflection.md) | Personal reflection at challenge conclusion |
+| [learning/learning-summary.md](learning/learning-summary.md) | Comprehensive synthesis of the 60-day learning curriculum |
+| [learning/skills-acquired.md](learning/skills-acquired.md) | Catalog of technical and engineering skills acquired |
+| [learning/important-concepts.md](learning/important-concepts.md) | Deep dive into architecture principles and forensic concepts |
+| [daily-logs/README.md](daily-logs/README.md) | Directory guide for daily engineering logs |
+| [daily-logs/Day-03.md](daily-logs/Day-03.md) | Day 3: Project foundation, runtime & health tests |
+| [daily-logs/Day-04.md](daily-logs/Day-04.md) | Day 4: Evidence intake pipeline & SHA-256 fingerprinting |
+| [daily-logs/Day-05.md](daily-logs/Day-05.md) | Day 5: Forensic timeline reconstruction & attack stages |
+| [daily-logs/Day-06.md](daily-logs/Day-06.md) | Day 6: Deterministic heuristic engine & MITRE mapping |
+| [daily-logs/Day-07.md](daily-logs/Day-07.md) | Day 7: Analyst case management & localStorage persistence |
+| [daily-logs/Day-08.md](daily-logs/Day-08.md) | Day 8: Incident reports, HTML & browser-native PDF export |
+| [daily-logs/Day-09.md](daily-logs/Day-09.md) | Day 9: Security hardening, responsive navigation & a11y |
+| [daily-logs/Day-10.md](daily-logs/Day-10.md) | Day 10: Integrity audit, roadmap & v1.0.0 release packaging |
+| [projects/README.md](projects/README.md) | Projects directory guide |
+| [projects/project-details.md](projects/project-details.md) | In-depth technical architecture and capstone project details |
+| [prompts/README.md](prompts/README.md) | Prompt library guide and engineering principles |
+| [prompts/useful-prompts.md](prompts/useful-prompts.md) | Reusable Daily Build Prompt template and specialized patterns |
+| [reflections/challenges-and-solutions.md](reflections/challenges-and-solutions.md) | Real debugging cases and engineering solutions |
+| [reflections/final-reflection.md](reflections/final-reflection.md) | Comprehensive capstone reflection and AI mentor farewell |
+| [graduation-reflection.md](graduation-reflection.md) | Personal reflection at capstone completion |
 | [final-farewell.md](final-farewell.md) | Farewell message from the AI pair programmer |
 | [docs/capstone-retrospective.md](docs/capstone-retrospective.md) | Full engineering retrospective — architecture, pivots, test results |
-| [daily-learning/README.md](daily-learning/README.md) | Daily learning log directory guide |
-| [projects/README.md](projects/README.md) | Projects directory guide |
-| [screenshots/README.md](screenshots/README.md) | Screenshot checklist and media guide |
-| [certificates/README.md](certificates/README.md) | Certificate and credential links |
-| [prompts/README.md](prompts/README.md) | Prompt library and engineering principles |
 
 ---
 
@@ -248,8 +214,6 @@ All detailed engineering documentation lives in the [capstone repository](https:
 - [Challenge Retrospective](https://github.com/Satya1135/ai-linux-investigation-workspace/blob/main/docs/challenge-retrospective.md) — Full Days 1–10 retrospective
 - [Future Scope Roadmap](https://github.com/Satya1135/ai-linux-investigation-workspace/blob/main/docs/future-scope.md) — 3-, 6-, 12-month plan
 - [Portfolio Kit](https://github.com/Satya1135/ai-linux-investigation-workspace/blob/main/docs/portfolio-kit.md) — Resume bullets, demo script, interview talking points
-- [Capstone Certificate (PDF)](https://github.com/Satya1135/ai-linux-investigation-workspace/blob/main/10-day-capstone-completion-certificate.pdf)
-- [Graduation Infographic](https://github.com/Satya1135/ai-linux-investigation-workspace/blob/main/60-day-learning-journey-infographic.html)
 
 ---
 

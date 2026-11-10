@@ -1,35 +1,22 @@
-# Prompt Library
+# Prompt Library — 60-Day Claude AI Mastery Challenge
 
-This directory is reserved for notable prompts developed during the 60-Day Claude AI Mastery Challenge.
-
----
-
-## Capstone Daily Build Prompt
-
-The capstone project developed a reusable, parameterized daily build prompt template for AI pair programming sessions. It is preserved in the capstone repository:
-
-- [docs/daily-build-prompt.md](https://github.com/Satya1135/ai-linux-investigation-workspace/blob/main/docs/daily-build-prompt.md)
+This directory preserves prompt engineering patterns, reusable templates, and structured AI pair programming workflows developed during the challenge.
 
 ---
 
-## What Belongs Here
+## Featured Prompt Resources
 
-Add markdown files for prompts you developed during the challenge that you want to preserve. Good candidates include:
-
-- Prompt templates for recurring workflows (code review, documentation, debugging)
-- Notable prompts that produced especially useful or surprising results
-- Prompt patterns for specific tasks: research, refactoring, test generation, writing
-- Annotated prompts with notes on what worked and what did not
+- **[useful-prompts.md](useful-prompts.md)** — Complete catalog of prompts developed during the challenge, including:
+  - The **Reusable Daily Build Prompt Template** with safety guardrails and audit checklists.
+  - Specialized prompt patterns for Root Cause Debugging, Security Audits, and Architectural Trade-Off Analysis.
+- **[External Daily Build Prompt](https://github.com/Satya1135/ai-linux-investigation-workspace/blob/main/docs/daily-build-prompt.md)** — The original daily build prompt template in the capstone repository.
 
 ---
 
-## Prompt Engineering Principles Learned
+## Core Prompt Engineering Principles Learned
 
-From the challenge experience:
-
-1. **Be specific about role and context** — tell the AI who it is and what it knows
-2. **Define acceptance criteria** — describe what "done" looks like, not just what to do
-3. **Set explicit boundaries** — say what is out of scope to prevent scope creep
-4. **Request incremental output** — for large tasks, ask for one piece at a time
-5. **Verify, don't assume** — always check AI output against authoritative sources
-6. **Document what worked** — the best prompts are worth saving and reusing
+1. **Be specific about role, technology stack, and context** — anchoring the AI in production standards prevents tutorial-grade output.
+2. **Define strict acceptance criteria** — state measurable outputs and testing requirements upfront.
+3. **Set explicit negative boundaries** — explicitly state what is *out of scope* to prevent feature creep.
+4. **Enforce verification gates** — require automated test execution and log review before declaring tasks complete.
+5. **Request incremental output** — decompose complex full-stack features into reviewable, single-milestone steps.
